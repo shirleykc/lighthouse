@@ -3,6 +3,7 @@ clone_depth: 10
 version: "{build}"
 
 environment:
+  fast_finish: true
   matrix:
     - nodejs_version: "6.9.1"
       platform: x86
@@ -13,6 +14,7 @@ build: off
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
+  - npm install yarn -g
   - yarn
   - yarn install-all
 
@@ -27,9 +29,8 @@ test_script:
   - npm --version
   - yarn --version
   - which yarn
-  - npm install yarn -g
-  - which yarn
-  - yarn install-all
+  - yarn lint
+  - yarn unit
   - yarn smoke
   - yarn smokehouse
 
