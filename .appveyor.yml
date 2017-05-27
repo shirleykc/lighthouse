@@ -26,8 +26,10 @@ test_script:
   - node --version
   - npm --version
   - yarn --version
-  - yarn lint
-  - yarn unit
+  - which yarn
+  - npm install yarn -g
+  - which yarn
+  - yarn install-all
   - yarn smoke
   - yarn smokehouse
 
